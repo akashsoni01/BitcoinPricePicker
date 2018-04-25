@@ -9,8 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
-    
-    var currency = ["USD","Rupee","yeen","rokda","mathi","ghasi"]
+    var region = ["africa","asia","europe"]
+    var currency = [
+        ["Africa USD","Rupee","yeen","rokda","mathi","ghasi"],
+        ["asia USD","Rupee","yeen","rokda","mathi","ghasi"],
+        ["europe USD","Rupee","yeen","rokda","mathi","ghasi"]
+    ]
 
     @IBOutlet weak var moneyUnit: UIPickerView!
     override func viewDidLoad() {
@@ -25,18 +29,19 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return currency.count
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return currency.count
+        return currency[component].count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return currency[row]
+        return currency[component][row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(currency[row])
+        print(currency[component][row])
     }
 
 }
